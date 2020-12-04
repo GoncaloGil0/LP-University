@@ -42,6 +42,7 @@ int main() {
             printf("f7");
             break;
         case 8:
+            printf("A aplicação foi terminada com sucesso");
             exit (0);
         default:
             printf("Opção Inválida"); // não é necessário devido ao "do {} while" acima
