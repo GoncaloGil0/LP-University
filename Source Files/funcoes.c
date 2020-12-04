@@ -15,9 +15,10 @@ int menu(){
         printf("| 5) Listgem 3\n");
         printf("| 6) Listgem 4\n");
         printf("| 7) Listgem 5\n");
+        printf("| 8) Sair\n");
         printf("| Opção: ");
         scanf("%d", &opcao);
-    } while ( opcao < 1 || opcao > 7);
+    } while ( opcao < 1 || opcao > 8);
 
     return (opcao);
     

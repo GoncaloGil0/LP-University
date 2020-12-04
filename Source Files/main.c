@@ -41,6 +41,8 @@ int main() {
         case 7:
             printf("f7");
             break;
+        case 8:
+            exit (0);
         default:
             printf("Opção Inválida"); // não é necessário devido ao "do {} while" acima
     }
