@@ -14,7 +14,7 @@ int main() {
     int codigo, numero_tlf, numero_filhos;
     char nome[50];
     enum estadoCivil{ solteiro, casado, viuvo, divorciado };
-    enum cargo{ empregado = 40, chefe = 60, administrador = 80};
+    enum cargo{ empregado = 40, chefe = 60, administrador = 80}; //esses valores sao o pagamento por dia? mas nos vamos ter de gerir por horas, dividimos tipo 40/8?
     float sub_alimentacao;
     
     //escolha do menu
