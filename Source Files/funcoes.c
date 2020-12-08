@@ -12,13 +12,14 @@ void menu(){
         printf("| 1) Carregar dados\n");
         printf("| 2) Guardar dados\n");
         printf("| 3) Gestão de funcionarios\n"); //criar menu para este 
-        printf("| 4) Gestão das tabelas de descontos para a Segurança Social\n"); //menu para este tambem
-        printf("| 5) Listgem 1\n");
-        printf("| 6) Listgem 2\n");
-        printf("| 7) Listgem 3\n");
-        printf("| 8) Listgem 4\n");
-        printf("| 9) Listgem 5\n");
-        printf("| 10) Sair\n");
+        printf("| 4) Gestão das tabelas de descontos para o IRS\n");
+        printf("| 5) Gestão das tabelas de descontos para a Segurança Social\n"); //menu para este tambem
+        printf("| 6) Listagem 1\n");
+        printf("| 7) Listagem 2\n");
+        printf("| 8) Listagem 3\n");
+        printf("| 9) Listagem 4\n");
+        printf("| 10) Listagem 5\n");
+        printf("| 0) Sair\n");
         printf("| Opção: ");
         scanf("%d", &opcao);
     } while ( opcao < 1 || opcao > 10);
