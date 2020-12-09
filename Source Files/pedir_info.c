@@ -32,3 +32,15 @@
         //(uma biblio que indique a saida da empresa) &funcionario->saida_emp;
         //falta o numero de horas
     }
+
+
+    void calcSalarial (Funcionario *funcionario) {
+        printf("\nNumero de dias completos trabalhados: ");
+        scanf("%d", &funcionario->dias_compl);
+        printf("\nNumero de meios dias trabalhados: ");
+        scanf("%d", &funcionario->dias_meios);
+        printf("\nNumero de dias trabalhados ao fim de semana: ");
+        scanf("%d", &funcionario->dias_fds);
+        printf("\nNumero de dias faltados: ");
+        scanf("%d", &funcionario->dias_faltas);
+    }
