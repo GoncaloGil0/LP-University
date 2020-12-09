@@ -31,6 +31,8 @@
         lerData(&funcionario->entrada_emp);
         //(uma biblio que indique a saida da empresa) &funcionario->saida_emp;
         //falta o numero de horas
+        // 
+        // aqui podemos adicionar um if do tipo: ainda se encontra na empresa?; se sim, continua, se nao, pergunta a data de saida
     }
 
 
