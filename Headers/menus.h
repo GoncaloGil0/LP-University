@@ -1,16 +1,7 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
-//REGISTOS 
-typedef struct data {
-   int dia, mes, ano;
-} Data;
-
-typedef struct {
-    //informação a guardar referente ao funcionario
-    int codigo, numero_tlm, numero_filhos, valor_hora, valor_sub_alimentacao;
-    char nome[20], estado_civil[15], cargo[15], data_nascimento[10], data_entrada_empresa[10], data_saida_empresa[10];
-} Funcionario_info;
+//REGISTOS
 
 typedef struct{
     //Calculos 
