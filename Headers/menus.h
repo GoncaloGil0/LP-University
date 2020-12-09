@@ -24,5 +24,9 @@ void editar_funcionario();
 //funções do menu das tabelas 
 void add_criterio();
 void criar_criterio();
+
+//funçao das listagens
+void print_listagem(Lista1);
+    
 #endif 
 
