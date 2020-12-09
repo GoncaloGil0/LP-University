@@ -8,7 +8,7 @@
         scanf("%d.%d.%d", &data->dia,&data->mes,&data->ano);
     }
     
-    void lerFuncionario (Funcionario *funcionario) {
+    void addFuncionario (Funcionario *funcionario) {
         printf("\nCódigo: ");
         scanf("%d", &funcionario->codigo);
         printf("\nNome: ");
