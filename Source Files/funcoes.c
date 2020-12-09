@@ -22,7 +22,7 @@ void menu(){
         printf("| 0) Sair\n");
         printf("| Opção: ");
         scanf("%d", &opcao);
-    } while ( opcao < 1 || opcao > 10);
+    } while ( opcao < 0 || opcao > 10);
     
     switch (opcao) { //foi criada uma função menu que retorna a opção do menu
         
@@ -39,21 +39,23 @@ void menu(){
             menu_gestao_tabelas();
             break;
         case 5:
-            printf("f5");
+            menu_gestao_tabelas();
             break;
         case 6:
-            printf("f6");
+            print_listagem();
             break;
         case 7:
-            printf("f7");
+            print_listagem();
             break;
         case 8:
-            printf("f8");
+            print_listagem();
             break;
         case 9:
-            printf("f9");
+            print_listagem();
             break;
         case 10:
+            print_listagem();
+        case 0:
             printf("A aplicação foi terminada com sucesso");
             exit (0);
         default:
@@ -69,10 +71,10 @@ void menu_gestao_funcionarios(){
         printf("| 1) Adicionar\n");
         printf("| 2) Editar\n");
         printf("| 3) Remover\n"); 
-        printf("| 4) Voltar\n");
+        printf("| 0) Voltar\n");
         printf("| Opção: ");
         scanf("%d", &opcao);
-    } while ( opcao < 1 || opcao > 4);
+    } while ( opcao < 0 || opcao > 4);
     
     switch (opcao){
         case 1:
@@ -84,7 +86,7 @@ void menu_gestao_funcionarios(){
         case 3:
             remover_funcionario();
             break;
-        case 4:
+        case 0:
             menu(); 
             break;
     }
@@ -94,13 +96,13 @@ void menu_gestao_tabelas(){
     int opcao;
 
     do {
-        printf("\n+ GESTÃO DAS TABELAS DE DESCONTOS PARA A SEGURANÇA SOCIAL +\n");
+        printf("\n+ GESTÃO DAS TABELAS DE DESCONTOS PARA O IRS E SEGURANÇA SOCIAL +\n");
         printf("| 1) Criar criterio\n");
         printf("| 2) Adicionar criterio\n");
-        printf("| 3) Voltar\n"); 
+        printf("| 0) Voltar\n"); 
         printf("| Opção: ");
         scanf("%d", &opcao);
-    } while ( opcao < 1 || opcao > 3);
+    } while ( opcao < 0 || opcao > 3);
 
     
     switch (opcao){
@@ -110,17 +112,20 @@ void menu_gestao_tabelas(){
         case 2:
             add_criterio();
             break;
-        case 3:
+        case 0:
             menu();    
             break;
     }
 }
 
 //Funções do menu dos funcionarios
-void add_funcionario(){ printf("Add user");}
-void remover_funcionario(){  printf("Remover user");}
+void add_funcionario(){printf("Add user");}
+void remover_funcionario(){printf("Remover user");}
 void editar_funcionario(){ printf("Editar user");}
 
 //Funções do menu das tabelas 
 void add_criterio(){printf("Add Criterio");}
 void criar_criterio(){printf("Criar criterio");}
+
+//Função de impressão de listagem
+void print_listagem(Lista1){printf("Listagem 1/2/3/4/5");}
