@@ -3,7 +3,31 @@
 #ifndef PEDIR_INFO_H
 #define PEDIR_INFO_H
 
-int teste();
+typedef enum {
+        CASADO, SOLTEIRO, DIVORCIADO, VIUVO
+    } Est_Civil;
+
+    typedef enum {
+        EMPREGADO, CHEFE, ADMINISTRADOR
+    } Cargo;
+    
+    typedef struct {
+        int dia, mes, ano;
+    } Data;
+
+    typedef struct {
+        int codigo, numero_tlm, numero_filhos;
+        char nome[50];
+        Est_Civil est_civil;
+        Cargo cargo;
+        float valor_hora, valor_sub_ali;
+        Data nascimento, entrada_emp, saida_emp;
+        //falta o numero de horas
+    } Funcionario;
+
+
+void lerData (Data *data);
+void lerFuncionario (Funcionario *funcionario);
 
 #endif /* PEDIR_INFO_H */
 
