@@ -29,7 +29,8 @@ typedef struct {
 
 
 void lerData (Data *data);
-void lerFuncionario (Funcionario *funcionario);
+void addFuncionario (Funcionario *funcionario);
+void calcSalarial (Funcionario *funcionario);
 
 #endif /* PEDIR_INFO_H */
 
