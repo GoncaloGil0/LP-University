@@ -119,7 +119,9 @@ void menu_gestao_tabelas(){
 }
 
 //Funções do menu dos funcionarios
-void add_funcionario(){printf("Add user");}
+void add_funcionario(){
+    addFuncionario(&funcionario[]);    
+;}
 void remover_funcionario(){printf("Remover user");}
 void editar_funcionario(){ printf("Editar user");}
 
