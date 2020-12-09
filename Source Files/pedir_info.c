@@ -19,7 +19,7 @@
         scanf("%d", &funcionario->est_civil);
         printf("\nNumero de filhos no agregado familiar: ");
         scanf("%d", &funcionario->numero_filhos);
-        printf("\nCargo na empresa [0-Empregado 1-Chefe 2-Administrador: ");
+        printf("\nCargo na empresa [0-Empregado 1-Chefe 2-Administrador]: ");
         scanf("%d", &funcionario->cargo);
         printf("\nSalário por hora: ");
         scanf("%f", &funcionario->valor_hora);
