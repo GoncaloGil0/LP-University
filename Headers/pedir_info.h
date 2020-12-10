@@ -3,6 +3,10 @@
 #ifndef PEDIR_INFO_H
 #define PEDIR_INFO_H
 
+#define bool int
+#define true 1
+#define false 0
+
 typedef enum {
     CASADO, SOLTEIRO, DIVORCIADO, VIUVO
 } Est_Civil;
@@ -21,16 +25,18 @@ typedef struct {
     Est_Civil est_civil;
     Cargo cargo;
     float valor_hora, valor_sub_ali;
-    Data nascimento, entrada_emp, saida_emp;
-    //falta o numero de horas
+    Data nascimento, entrada_emp, saida_emp;    
+    
     //integers para o processamento salarial
-    int dias_compl, dias_meios, dias_fds, dias_faltas; 
+    int dias_compl, dias_meios, dias_fds, dias_faltas, mes; 
 } Funcionario;
 
 
 void lerData (Data *data);
 void addFuncionario (Funcionario *funcionario);
 void calcSalarial (Funcionario *funcionario);
+int verifica_string(const char *palavra);
+bool verifica_numero(int num, int max, int min);
 
 #endif /* PEDIR_INFO_H */
 

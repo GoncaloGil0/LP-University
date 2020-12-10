@@ -1,5 +1,5 @@
-#ifndef FUNCOES_H
-#define FUNCOES_H
+#ifndef MENUS_H
+#define MENUS_H
 
 //REGISTOS
 
@@ -26,7 +26,7 @@ void add_criterio();
 void criar_criterio();
 
 //funçao das listagens
-void print_listagem(Lista1);
+void print_listagem();
     
 #endif 
 
