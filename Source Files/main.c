@@ -15,8 +15,6 @@ int main() {
     char resposta;
     
     //Registos
-    Data data[8];
-    Funcionario_info funcionario_info;
     Calculo calculo;
     
     do{

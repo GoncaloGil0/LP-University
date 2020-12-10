@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcoes.h"
+#include "menus.h"
 
 //Menus
 void menu(){
@@ -78,7 +78,7 @@ void menu_gestao_funcionarios(){
     
     switch (opcao){
         case 1:
-            add_funcionario();
+            addFuncionario();
             break;
         case 2:
             editar_funcionario();
@@ -119,9 +119,6 @@ void menu_gestao_tabelas(){
 }
 
 //Funções do menu dos funcionarios
-void add_funcionario(){
-    addFuncionario(&funcionario[]);    
-;}
 void remover_funcionario(){printf("Remover user");}
 void editar_funcionario(){ printf("Editar user");}
 
@@ -130,4 +127,4 @@ void add_criterio(){printf("Add Criterio");}
 void criar_criterio(){printf("Criar criterio");}
 
 //Função de impressão de listagem
-void print_listagem(Lista1){printf("Listagem 1/2/3/4/5");}
+void print_listagem(){printf("Listagem 1/2/3/4/5");}
