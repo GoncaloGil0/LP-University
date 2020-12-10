@@ -7,9 +7,26 @@
 #include "pedir_info.h"
 
 
+int verifica_string(const char *palavra){ //tem de ser melhorado
+    while (*palavra) {
+        if (isdigit(*palavra++) == 0) {
+            return 1;
+        }
+    }
+    printf("Input invalido\n");
+    return 0;
+}
+
+bool verifica_numero(int num, int max, int min){
+    return (min < num || num < max);
+}
+
+
+
 void lerData (Data *data) {
     scanf("%d.%d.%d", &data->dia, &data->mes, &data->ano);
 }
+
 
 void addFuncionario (Funcionario *funcionario) {
     char nome[50], saida;
@@ -101,18 +118,4 @@ void calcSalarial (Funcionario *funcionario) {
     scanf("%d", &funcionario->dias_fds);
     printf("\nNumero de dias faltados: ");
     scanf("%d", &funcionario->dias_faltas);
-}
-
-int verifica_string(const char *palavra){ //tem de ser melhorado
-    while (*palavra) {
-        if (isdigit(*palavra++) == 0) {
-            return 1;
-        }
-    }
-    printf("Input invalido\n");
-    return 0;
-}
-
-bool verifica_numero(int num, int max, int min){
-    return (min < num || num < max);
 }
