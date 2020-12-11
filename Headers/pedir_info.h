@@ -30,7 +30,7 @@ typedef struct {
 
 
 void lerData (Data *data);
-void addFuncionario (Funcionario *funcionario);
+void add_funcionario (Funcionario *funcionario);
 void calcSalarial (Funcionario *funcionario);
 double obter_num(double min, double max);
 void cleanInputBuffer();
