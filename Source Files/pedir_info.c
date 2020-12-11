@@ -1,68 +1,50 @@
 // Codigo dedicado a todas as funções para pedir informação ao user 
 
+//Bibliotecas
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <regex.h>
+
+//headers
 #include "pedir_info.h"
+#include "menus.h"
+#include "processar_info.h"
 
+//constantes
+#define VALOR_INVALIDO " ! Valor inválido ! "
+#define NOME_INVALIDO " ! Nome inválido ! "
 
-int verifica_string(const char *palavra){ //tem de ser melhorado
-    while (*palavra) {
-        if (isdigit(*palavra++) == 0) {
-            return 1;
-        }
-    }
-    printf("Input invalido\n");
-    return 0;
+//funções
+void cleanInputBuffer() {
+    char ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
 }
-
-bool verifica_numero(int num, int max, int min){
-    return (min < num || num < max);
-}
-
-
 
 void lerData (Data *data) {
     scanf("%d.%d.%d", &data->dia, &data->mes, &data->ano);
 }
 
-
 void addFuncionario (Funcionario *funcionario) {
     char nome[50], saida;
-    int verifica, numero, est_civil, cargo;
+    int est_civil, cargo;
     
     printf("\nCódigo: ");
-    //scanf("%d", &funcionario->codigo); // se desse temos de fazer a verificação de que o input é um int e não uma string ou assim
+    //scanf("%d", &funcionario->codigo); 
     
-    do {
-        printf("\nNome: ");
-        scanf("%s", nome);
-        verifica = verifica_string(nome);
-        
-        if (verifica == 1) {
-            //funcionario->nome = nome;
-            break;
-        }
-    } while (verifica == 0);
-    
-    do {
-        printf("\nNumero de telemovel: ");
-        scanf("%d", numero );
-        
-        int maximo = 969999999, minino = 911111111;
-        verifica = verifica_numero(numero, maximo, minino); //resolver problema, n esta a dar n sei pq
+    printf("\nNome: ");
+    //scanf(" %s", funcionario->nome);    
 
-        if (verifica == 1) {
-            //&funcionario->numero_tlm = numero
-            break;
-        }
-    } while ( verifica == 0);
+    printf("\nNumero de telemovel: ");
+    
+    double max = 969999999;
+    double min = 911111111;
+
+    obter_num(min, max);//&funcionario->numero_tlm = ao que a função retorna
+
     
     do {
     printf("\nEstado civil [0-Casado 1-Solteiro 2-Divorciado 3-Viúvo]: "); 
     scanf("%d", &est_civil); 
-    
     } while ( est_civil > 3 || est_civil < 0 );
     
     //&funcionario->est_civil = est_civil
@@ -105,7 +87,6 @@ void addFuncionario (Funcionario *funcionario) {
 
 }
 
-
 void calcSalarial (Funcionario *funcionario) {
     // e para cada data verificar se os 4 parametros somados não dao superiores ao numero de dias nesse mes   
     printf("\nMês: ");
@@ -118,4 +99,15 @@ void calcSalarial (Funcionario *funcionario) {
     scanf("%d", &funcionario->dias_fds);
     printf("\nNumero de dias faltados: ");
     scanf("%d", &funcionario->dias_faltas);
+}
+
+double obter_num(double min, double max) {
+    double valor;
+    while (scanf("%lf", &valor) != 1 || valor < min || valor > max) {
+        puts(VALOR_INVALIDO);
+        cleanInputBuffer();
+        printf("Digite um valor: ");
+    }
+    cleanInputBuffer();
+    return valor;
 }

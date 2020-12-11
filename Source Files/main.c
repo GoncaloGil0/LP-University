@@ -3,10 +3,14 @@
  *      Programa de cálculo de salários
  */
 
+//Bibliotecas
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-#include "menus.h"
+
+//headers
 #include "pedir_info.h"
+#include "menus.h"
 #include "processar_info.h"
 
 int main() {

@@ -1,6 +1,12 @@
+//Bibliotecas
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+
+//headers
+#include "pedir_info.h"
 #include "menus.h"
+#include "processar_info.h"
 
 //Menus
 void menu(){
@@ -78,7 +84,7 @@ void menu_gestao_funcionarios(){
     
     switch (opcao){
         case 1:
-            addFuncionario();
+            addFuncionario(Funcionario *funcionario);
             break;
         case 2:
             editar_funcionario();
