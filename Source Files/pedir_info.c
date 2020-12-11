@@ -24,7 +24,7 @@ void lerData (Data *data) {
     scanf("%d.%d.%d", &data->dia, &data->mes, &data->ano);
 }
 
-void addFuncionario (Funcionario *funcionario) {
+void add_funcionario (Funcionario *funcionario) {
     char nome[50], saida;
     int est_civil, cargo;
     
