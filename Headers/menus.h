@@ -17,7 +17,7 @@ void menu_gestao_funcionarios();
 void menu_gestao_tabelas();
 
 //funções do menu dos funcionarios 
-void add_funcionario();
+//void add_funcionario();
 void remover_funcionario();
 void editar_funcionario();
 

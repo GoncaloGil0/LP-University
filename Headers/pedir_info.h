@@ -3,10 +3,6 @@
 #ifndef PEDIR_INFO_H
 #define PEDIR_INFO_H
 
-#define bool int
-#define true 1
-#define false 0
-
 typedef enum {
     CASADO, SOLTEIRO, DIVORCIADO, VIUVO
 } Est_Civil;
@@ -20,6 +16,7 @@ typedef struct {
 } Data;
 
 typedef struct {
+    //user info
     int codigo, numero_tlm, numero_filhos;
     char nome[50];
     Est_Civil est_civil;
@@ -35,8 +32,8 @@ typedef struct {
 void lerData (Data *data);
 void addFuncionario (Funcionario *funcionario);
 void calcSalarial (Funcionario *funcionario);
-int verifica_string(const char *palavra);
-bool verifica_numero(int num, int max, int min);
+double obter_num(double min, double max);
+void cleanInputBuffer();
 
 #endif /* PEDIR_INFO_H */
 
