@@ -13,7 +13,7 @@
 #define OBTER_NOME "Nome: "
 
 #define MAX_NUM_TELE 969999999
-#define MIN_NUM_TELE 911111111 //nao é 910000000?
+#define MIN_NUM_TELE 910000000
 #define OBTER_NUM_TELE "Número de telemóvel: "
 
 #define OBTER_EST_CIVIL "Estado civil [0-Casado 1-Solteiro 2-Divorciado 3-Viúvo]: "
@@ -48,7 +48,7 @@
 #define FUNC_EXISTENTE " ! Funcionário já existente ! "
 #define LISTA_CHEIA " ! Lista cheia ! "
 #define DIAS_MAIOR_MES " ! Dias ultrapassam dias do mes ! "
-#define FUNC_INEXISTENTE " ! Funcionario nao existe ! "
+#define FUNC_INEXISTENTE " ! Funcionario não existe ! "
 
 #define SUCESSO "Operação realizada com sucesso"
 
@@ -85,11 +85,13 @@ typedef struct {
     Cargo cargo;
     float valor_hora, valor_sub_ali;
     Data nascimento, entrada_emp, saida_emp;    
+    
     //integers para o processamento salarial
     Mes mes;
     int dias_compl, dias_meios, dias_fds, dias_faltas; 
+    
     //ativo ou nao
-    //int ativo=0; //da erro nao sei porque ainda
+    //int ativo = 0; //da erro nao sei porque ainda
 } Funcionario;
 
 //ARRAY FUNCIONARIOS + CONTADOR
@@ -113,6 +115,8 @@ void removerFucionarios(Funcionarios *funcionarios);
 int obterNumDias(char *texto);
 int verificacaoDias (int dias_compl, int dias_meios, int dias_fds, int dias_faltas, Mes *mes);
 void calcSalarial(Funcionarios *funcionarios);
+char *data_completa();
+int define_data(int pedido);
 
 
 #endif
