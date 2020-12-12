@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "pedir_info.h"
 #include "menus.h"
@@ -9,6 +10,38 @@
 
 //FUNÇOES
 
+
+//SABER PARTES DA DATA 
+
+int define_data(int pedido){
+    
+    struct tm *data;
+    time_t tempo;
+
+    time(&tempo);
+    data = localtime(&tempo);
+    
+    switch (pedido){
+        case 1:
+            return (data->tm_mday); //retorna o dia caso receba o numero 1
+        case 2:
+            return (data->tm_mon + 1); // retorna o mes caso receba o numero 2
+        case 3:
+            return (data->tm_year + 1900); // retorn o ano caso receba o numero 3
+    }
+}
+
+//SABER A DATA COMPLETA
+char *data_completa(){
+    
+    struct tm *data;
+    time_t tempo;
+
+    time(&tempo);
+    data = localtime(&tempo);
+   
+    return(ctime(&tempo));
+}
 
 //CLEAN BUFFER
 
@@ -60,7 +93,6 @@ double obterNum(double min, double max, char *texto) {
 }
 
 
-
 //PROCURAR FUNCIONARIO
 
 int procurarFuncionario(Funcionarios funcionarios, int codigo) {
@@ -73,9 +105,8 @@ int procurarFuncionario(Funcionarios funcionarios, int codigo) {
     return -1;
 }
 
-
-
 //INPUTS DO FUNCIONARIO
+
 int addFuncionario(Funcionarios *funcionarios, int codigo) {
 
 
@@ -84,21 +115,17 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
     char saida;
 
     
-
     //ASSOCIAR CODIGO
     funcionarios->funcionario_array[funcionarios->contador].codigo = codigo;
-
 
 
     //OBTER NOME
     obterString(funcionarios->funcionario_array[funcionarios->contador].nome, MAX_NOME, OBTER_NOME);
 
 
-
     //OBTER NUMERO TELEMOVEL
     double numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
     funcionarios->funcionario_array[funcionarios->contador].numero_tlm = numero_tlm;
-
 
 
     //OBTER ESTADO CIVIL
@@ -147,6 +174,8 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
     funcionarios->funcionario_array[funcionarios->contador].nascimento.dia = obterInt(MIN_DIA, MAX_DIA, OBTER_DIA);
     funcionarios->funcionario_array[funcionarios->contador].nascimento.dia = obterInt(MIN_MES, MAX_MES, OBTER_MES);
     funcionarios->funcionario_array[funcionarios->contador].nascimento.dia = obterInt(MIN_ANO, MAX_ANO, OBTER_ANO);
+        // se pedirmos o ano primeiro podemos fazer uma condicional e saber se é bissexto, caso seja inclementamos 1 dia
+        // ao MAX_DIA caso n seja, nao faz nada
 
 
 
@@ -155,6 +184,8 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
     funcionarios->funcionario_array[funcionarios->contador].entrada_emp.dia = obterInt(MIN_DIA, MAX_DIA, OBTER_DIA);
     funcionarios->funcionario_array[funcionarios->contador].entrada_emp.dia = obterInt(MIN_MES, MAX_MES, OBTER_MES);
     funcionarios->funcionario_array[funcionarios->contador].entrada_emp.dia = obterInt(MIN_ANO, MAX_ANO, OBTER_ANO);
+        // se pedirmos o ano primeiro podemos fazer uma condicional e saber se é bissexto, caso seja inclementamos 1 dia
+        // ao MAX_DIA caso n seja, nao faz nada
 
 
 
@@ -173,8 +204,13 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
         funcionarios->funcionario_array[funcionarios->contador].saida_emp.dia = obterInt(MIN_DIA, MAX_DIA, OBTER_DIA);
         funcionarios->funcionario_array[funcionarios->contador].saida_emp.dia = obterInt(MIN_MES, MAX_MES, OBTER_MES);
         funcionarios->funcionario_array[funcionarios->contador].saida_emp.dia = obterInt(MIN_ANO, MAX_ANO, OBTER_ANO);
+                // se pedirmos o ano primeiro podemos fazer uma condicional e saber se é bissexto, caso seja inclementamos 1 dia
+                // ao MAX_DIA caso n seja, nao faz nada
+
     } else {
         // temos de atribuir um valor a data quando ele ainda esta na empresa para podermos fazer os calculos dps
+        // podemos dar o valor 0 e programa-lo para quando encontrar um 0 na data ir á funcao define_data() buscar 
+        // o ano atual
     }
 
 
@@ -188,18 +224,14 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
     return funcionarios->contador++;
 }
 
-
-
-
 //VERIFICAR SE PODE ADICIONAR FUNCIONARIO OU SEJA SE JA EXISTE 
+
 int verifFuncionario (Funcionarios funcionarios, int codigo) {
     if (procurarFuncionario(funcionarios, codigo) != -1) {
         return -1;
     }
     addFuncionario(&funcionarios, codigo);
 }
-
-
 
 //VERIFICAR SE LISTA DE FUNCIONARIOS ESTA CHEIA
 
@@ -215,8 +247,6 @@ int addFuncionarios(Funcionarios funcionarios) {
     }
 }
 
-
-
 //VERIFICAR SE PODE EDITAR FUNCIONARIO
 
 void editarFuncionarios(Funcionarios *funcionarios) {
@@ -228,9 +258,6 @@ void editarFuncionarios(Funcionarios *funcionarios) {
         puts(FUNC_INEXISTENTE);
     }
 }
-
-
-
 
 //REMOVER FUNCIONARIOS
 
@@ -245,8 +272,6 @@ void removerFuncionarios(Funcionarios *funcionarios) {
     }
 }
 
-
-
 //OBTER NUMERO DE DIAS NO MES
 
 int obterNumDias(char *texto) {
@@ -257,24 +282,21 @@ int obterNumDias(char *texto) {
     cleanInputBuffer();
 }
 
-
-
 //VERIFICAR SOMA DOS DIAS
 
 int verificacaoDias(int dias_compl, int dias_meios, int dias_fds, int dias_faltas, Mes *mes) {
     int soma = dias_compl + dias_meios + dias_fds + dias_faltas;
-    if (soma>*(mes--)) { //para assinalar pela contagem do array da enum, pois ninguem vais escrever 0 para janeiro por exemplo
+    if (soma > *(mes--)) { //para assinalar pela contagem do array da enum, pois ninguem vais escrever 0 para janeiro por exemplo
         puts(DIAS_MAIOR_MES);
         return -1;
     }
     return 0;
 }
 
-
-
 //CALCULAR SALARIOS
 
 void calcSalarial(Funcionarios *funcionarios) {
+    
     do {
         funcionarios->funcionario_array[funcionarios->contador].mes = obterNumDias(OBTER_NUM_MES); //se o mes mudar, o resto nao muda pois nao?
         funcionarios->funcionario_array[funcionarios->contador].dias_compl = obterNumDias(OBTER_DIAS_COMPL);

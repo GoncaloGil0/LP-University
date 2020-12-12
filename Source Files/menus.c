@@ -19,9 +19,9 @@ void menu() {
         printf("\n+ MENU +\n");
         printf("| 1) Carregar dados\n");
         printf("| 2) Guardar dados\n");
-        printf("| 3) Gestão de funcionarios\n"); //criar menu para este 
+        printf("| 3) Gestão de funcionarios\n"); 
         printf("| 4) Gestão das tabelas de descontos para o IRS\n");
-        printf("| 5) Gestão das tabelas de descontos para a Segurança Social\n"); //menu para este tambem
+        printf("| 5) Gestão das tabelas de descontos para a Segurança Social\n");
         printf("| 6) Listagem 1\n");
         printf("| 7) Listagem 2\n");
         printf("| 8) Listagem 3\n");

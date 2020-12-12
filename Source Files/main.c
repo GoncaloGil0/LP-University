@@ -13,9 +13,7 @@ int main() {
     //VARIAVEIS
     char resposta;
 
-    //REGISTOS
-    //Calculo calculo;
-
+    
     //CHAMAR MENU
     do {
         menu();
