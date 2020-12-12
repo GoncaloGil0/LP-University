@@ -27,18 +27,9 @@ int define_data(int pedido){
         case 2:
             return (data->tm_mon + 1); // retorna o mes caso receba o numero 2
         case 3:
-            return (data->tm_year + 1900); // retorna o ano caso receba o numero 3
-        case 4:
-            return(data->tm_hour); // retorna a hora caso receba o numero 4
-        case 5:
-            return(data->tm_min); // retorna os minutos caso receba o numero 5
-        case 6:
-            return(data->tm_sec); // retorna os segundos caso receba o numero 6
-        default:
-            return(-1);
+            return (data->tm_year + 1900); // retorn o ano caso receba o numero 3
     }
 }
-
 
 //SABER A DATA COMPLETA
 char *data_completa(){
@@ -264,7 +255,8 @@ void editarFuncionarios(Funcionarios *funcionarios) {
     if ( numero != -1) {
         addFuncionario( &funcionarios->funcionario_array[numero], codigo);
     } else {
-        puts(FUNC_INEXISTENTE);
+        puts(FUNC_INEXISTENTE); 
+        //editar_info_funcionarios(codigo);
     }
 }
 
@@ -318,4 +310,108 @@ void calcSalarial(Funcionarios *funcionarios) {
             funcionarios->funcionario_array[funcionarios->contador].dias_faltas,
             &funcionarios->funcionario_array[funcionarios->contador].mes)
             == -1);
+}
+
+// FAZER A ALTERAÇÃO DOS DADOS DO FUNCIONARIO 
+
+void editar_info_funcionarios(Funcionarios *funcionarios, int codigo){
+   
+    int const EMPREGADO; // tenho de meter =  a something para dizer o lugar no array
+    int opcao, est_civil, cargo;
+    
+    switch (opcao){
+    
+        case 1:
+            //ALTERAR TELEMOVEL
+            double numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
+            funcionarios->funcionario_array[EMPREGADO].numero_tlm = numero_tlm;
+            break;
+        case 2:
+            //ALTERAR ESTADO CIVIL
+            do {
+                puts(OBTER_EST_CIVIL);
+                scanf("%d", &est_civil);
+            } while (est_civil > 3 || est_civil < 0);
+            funcionarios->funcionario_array[EMPREGADO].est_civil = est_civil;
+            cleanInputBuffer();
+            break;
+        case 3:
+            // ALTERAR NUMERO DE FILHOS
+            puts(OBTER_NUM_FILHOS);
+            scanf("%d", &funcionarios->funcionario_array[EMPREGADO].numero_filhos);
+            cleanInputBuffer();
+            break;
+        case 4:
+            // ALTERAR CARGO
+            do {
+                puts(OBTER_CARGO);
+                scanf("%d", &cargo);
+            } while (cargo > 2 || cargo < 0);
+            funcionarios->funcionario_array[EMPREGADO].cargo = cargo;
+            cleanInputBuffer();
+            break;
+        case 5:
+            // ALTERAR VALOR HORA
+            puts(OBTER_SALARIO);
+            scanf("%f", &funcionarios->funcionario_array[EMPREGADO].valor_hora);
+            cleanInputBuffer();
+            break;
+        case 6:
+            // ALTERAR VALOR HORA ALIMENTAÇÃO
+            puts(OBTER_SUB_ALI);
+            scanf("%f", &funcionarios->funcionario_array[EMPREGADO].valor_sub_ali);
+            cleanInputBuffer();
+            break;
+        case 7:
+            // ALTERAR DATA DE SAIDA DA EMPRESA
+            puts(OBTER_DATA_SAIDA);
+            funcionarios->funcionario_array[EMPREGADO].saida_emp.dia = obterInt(MIN_DIA, MAX_DIA, OBTER_DIA);
+            funcionarios->funcionario_array[EMPREGADO].saida_emp.dia = obterInt(MIN_MES, MAX_MES, OBTER_MES);
+            funcionarios->funcionario_array[EMPREGADO].saida_emp.dia = obterInt(MIN_ANO, MAX_ANO, OBTER_ANO);
+                // se pedirmos o ano primeiro podemos fazer uma condicional e saber se é bissexto, caso seja inclementamos 1 dia
+                // ao MAX_DIA caso n seja, nao faz nada
+            break;
+        case 0:        
+            // VOLTAR MENU DO FUNCIONARIO
+            menu_gestao_funcionarios();
+            break;
+    }
+}
+
+// MOSTRAR OS DADOS DO FUNCIONARIO 
+
+int mostrar_info(Funcionarios funcionarios, int codigo){
+
+    int const EMPREGADO; // tenho de meter =  a something para dizer o lugar no array
+    int opcao;
+    
+    printf("%s%d\n", OBTER_CODIGO,funcionarios.funcionario_array[EMPREGADO].codigo);
+    printf("%s%s\n", OBTER_NOME,funcionarios.funcionario_array[EMPREGADO].nome);
+    printf("%s%d\n", OBTER_NUM_TELE,funcionarios.funcionario_array[EMPREGADO].numero_tlm);
+    printf("%s%d\n", EST_CIVIL,funcionarios.funcionario_array[EMPREGADO].est_civil);
+    printf("%s%d\n", OBTER_NUM_FILHOS,funcionarios.funcionario_array[EMPREGADO].numero_filhos);
+    printf("%s%d\n", CARGO,funcionarios.funcionario_array[EMPREGADO].cargo);
+    printf("%s%f\n", OBTER_SALARIO,funcionarios.funcionario_array[EMPREGADO].valor_hora);
+    printf("%s%f\n", OBTER_SUB_ALI,funcionarios.funcionario_array[EMPREGADO].valor_sub_ali);
+    printf("%s%d\n", OBTER_DATA_NASC,funcionarios.funcionario_array[EMPREGADO].nascimento);
+    printf("%s%d\n", OBTER_DATA_ENT,funcionarios.funcionario_array[EMPREGADO].entrada_emp);
+    printf("%s%d\n", OBTER_DATA_SAIDA,funcionarios.funcionario_array[EMPREGADO].saida_emp); //melhorar para aqueles que cont na empresa
+
+    do {
+        puts("Escolha o parametro que deseja alterar: \n\n");
+        puts("1) Numero de telemovel \n");
+        puts("2) Estado Civil \n");
+        puts("3) Numero de filhos \n");
+        puts("4) Cargo \n");
+        puts("5) Valor hora \n");
+        puts("6) Valor hora subsidio de alimentação \n");
+        puts("7) Data de saida da empresa \n");
+        puts("0) Voltar \n");
+        puts("opção: ");
+        scanf("%d", &opcao);
+    
+    }while ( opcao < 0 || opcao > 7);
+    
+    return (opcao);
+    
 }

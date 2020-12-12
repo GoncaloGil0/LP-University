@@ -4,8 +4,6 @@
 
 #include "pedir_info.h"
 #include "menus.h"
-//#include "processar_info.h"
-
 
 //VARIAVEIS APOIO
 Funcionarios funcionarios = {.contador = 0};
@@ -22,15 +20,11 @@ void menu() {
         printf("| 3) Gestão de funcionarios\n"); 
         printf("| 4) Gestão das tabelas de descontos para o IRS\n");
         printf("| 5) Gestão das tabelas de descontos para a Segurança Social\n");
-        printf("| 6) Listagem 1\n");
-        printf("| 7) Listagem 2\n");
-        printf("| 8) Listagem 3\n");
-        printf("| 9) Listagem 4\n");
-        printf("| 10) Listagem 5\n");
+        printf("| 6) Listagens \n");
         printf("| 0) Sair\n");
         printf("| Opção: ");
         scanf("%d", &opcao);
-    } while (opcao < 0 || opcao > 10);
+    } while (opcao < 0 || opcao > 6);
 
     switch (opcao) {
 
@@ -50,24 +44,11 @@ void menu() {
             menu_gestao_tabelas();
             break;
         case 6:
-            //print_listagem();
+            menu_listagens();
             break;
-        case 7:
-            //print_listagem();
-            break;
-        case 8:
-            //print_listagem();
-            break;
-        case 9:
-            //print_listagem();
-            break;
-        case 10:
-            //print_listagem();
         case 0:
             printf("A aplicação foi terminada com sucesso");
             exit(0);
-        default:
-            printf("Opção Inválida");
     }
 }
 
@@ -129,3 +110,45 @@ void menu_gestao_tabelas() {
             break;
     }
 }
+
+//MENU LISTAGENS
+void menu_listagens(){
+    
+    int opcao;
+    
+    do{
+    
+        printf("\n+ MENU +\n");
+        printf("| 1) Listagem 1\n");
+        printf("| 2) Listagem 2\n");
+        printf("| 3) Listagem 3\n"); 
+        printf("| 4) Listagem 4\n");
+        printf("| 5) Listagem 5\n");
+        printf("| 0) Voltar\n");
+        printf("| Opção: ");
+        scanf("%d", &opcao);    
+    }while( opcao < 0 || opcao > 5 );
+    
+    switch (opcao){
+        case 1:
+            //listagem 1
+            break;
+        case 2:
+            //listagem 2
+            break;
+        case 3:
+            //listagem 3
+            break;
+        case 4:
+            //listagem 4
+            break;
+        case 5:
+            //listagem 5
+            break;
+        case 0:
+            menu();
+            break;
+    }
+
+}
+
