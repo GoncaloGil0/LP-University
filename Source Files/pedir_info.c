@@ -27,9 +27,18 @@ int define_data(int pedido){
         case 2:
             return (data->tm_mon + 1); // retorna o mes caso receba o numero 2
         case 3:
-            return (data->tm_year + 1900); // retorn o ano caso receba o numero 3
+            return (data->tm_year + 1900); // retorna o ano caso receba o numero 3
+        case 4:
+            return(data->tm_hour); // retorna a hora caso receba o numero 4
+        case 5:
+            return(data->tm_min); // retorna os minutos caso receba o numero 5
+        case 6:
+            return(data->tm_sec); // retorna os segundos caso receba o numero 6
+        default:
+            return(-1);
     }
 }
+
 
 //SABER A DATA COMPLETA
 char *data_completa(){
