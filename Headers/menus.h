@@ -1,32 +1,33 @@
 #ifndef MENUS_H
 #define MENUS_H
 
+
 //REGISTOS
 
-typedef struct{
-    //Calculos 
-    int vencimento_liquido;
-    float vencimento_iliquido, encargo_total_empresa, iva, sub_alimentacao, bonus, ss_entidade_patronal, ss_entidade_pessoal;
+//CALCULO
+typedef struct{ 
+    int venc_liquido;
+    float venc_iliquido, encargo_total_emp, iva, sub_ali, bonus, ss_ent_patronal, ss_ent_pessoal;
 } Calculo;
 
-//funções
 
-//Menus
+//FUNÇOES
+
+//MENUS
 void menu();
 void menu_gestao_funcionarios();
 void menu_gestao_tabelas();
 
-//funções do menu dos funcionarios 
-//void add_funcionario();
-void remover_funcionario();
-void editar_funcionario();
+//MENU FUNCIONARIOS 
+void add_funcionario();
+//void remover_funcionario();
+//void editar_funcionario();
 
-//funções do menu das tabelas 
-void add_criterio();
-void criar_criterio();
+//MENU TABELAS 
+//void add_criterio();
+//void criar_criterio();
 
-//funçao das listagens
-void print_listagem();
+//LISTAGENS
+//void print_listagem();
     
-#endif 
-
+#endif
