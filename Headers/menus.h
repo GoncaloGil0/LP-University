@@ -17,11 +17,12 @@ typedef struct{
 void menu();
 void menu_gestao_funcionarios();
 void menu_gestao_tabelas();
+void menu_listagens();
 
 //MENU FUNCIONARIOS 
 void add_funcionario();
-//void remover_funcionario();
-//void editar_funcionario();
+//void remover_funcionario(); //esta no pedir info
+//void editar_funcionario(); //esta no pedir info
 
 //MENU TABELAS 
 //void add_criterio();

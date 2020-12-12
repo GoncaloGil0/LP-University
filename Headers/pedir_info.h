@@ -16,6 +16,8 @@
 #define MIN_NUM_TELE 910000000
 #define OBTER_NUM_TELE "Número de telemóvel: "
 
+#define EST_CIVIL "Estado civi: "
+#define CARGO "Cargo na empresa: "
 #define OBTER_EST_CIVIL "Estado civil [0-Casado 1-Solteiro 2-Divorciado 3-Viúvo]: "
 #define OBTER_NUM_FILHOS "Número de filhos: "
 #define OBTER_CARGO "Cargo na empresa [0-Empregado 1-Chefe 2-Administrador]: "
@@ -29,9 +31,9 @@
 #define MAX_ANO 2020 //temos de usar algo que define o ano em que tamos (acho)
 #define MIN_ANO 1950
 
-#define OBTER_DATA_NASC "Data de nascimento"
-#define OBTER_DATA_ENT "Data de entrada na empresa"
-#define OBTER_DATA_SAIDA "Data de saída da empresa"
+#define OBTER_DATA_NASC "Data de nascimento: "
+#define OBTER_DATA_ENT "Data de entrada na empresa: "
+#define OBTER_DATA_SAIDA "Data de saída da empresa: "
 
 #define OBTER_DIA "Dia: "
 #define OBTER_MES "Mes: "
@@ -51,7 +53,6 @@
 #define FUNC_INEXISTENTE " ! Funcionario não existe ! "
 
 #define SUCESSO "Operação realizada com sucesso"
-
 
 
 //REGISTOS
@@ -117,6 +118,7 @@ int verificacaoDias (int dias_compl, int dias_meios, int dias_fds, int dias_falt
 void calcSalarial(Funcionarios *funcionarios);
 char *data_completa();
 int define_data(int pedido);
-
+void editar_info_funcionarios(Funcionarios *funcionarios, int codigo);
+int mostrar_info(Funcionarios funcionarios, int codigo);
 
 #endif
