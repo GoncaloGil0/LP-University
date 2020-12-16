@@ -18,11 +18,11 @@
 
 #define EST_CIVIL "Estado civi: "
 #define CARGO "Cargo na empresa: "
-#define OBTER_EST_CIVIL "Estado civil [0-Casado 1-Solteiro 2-Divorciado 3-Viúvo]: "
+#define OBTER_EST_CIVIL "Estado civil [0-Casado 1-Solteiro 2-Divorciado 3-Viuvo]: "
 #define OBTER_NUM_FILHOS "Número de filhos: "
 #define OBTER_CARGO "Cargo na empresa [0-Empregado 1-Chefe 2-Administrador]: "
 #define OBTER_SALARIO "Salário por hora: "
-#define OBTER_SUB_ALI "Subsídio de alimentação: "
+#define OBTER_SUB_ALI "SubsÃ­dio de alimentação: "
 
 #define MAX_DIA 31
 #define MIN_DIA 1
@@ -69,7 +69,7 @@ typedef enum {
 
 //MES
 typedef enum {
-    JANEIRO=31,FEVEREIRO=28,MAR�O=31,ABRIL=30,MAIO=31,JUNHO=30,JULHO=31,AGOSTO=31,SETEMBRO=30,OUTUBRO=31,NOVEMBRO=30,DEZEMBRO=31
+    JANEIRO=31,FEVEREIRO=28,MARÇO=31,ABRIL=30,MAIO=31,JUNHO=30,JULHO=31,AGOSTO=31,SETEMBRO=30,OUTUBRO=31,NOVEMBRO=30,DEZEMBRO=31
 } Mes;
     
 //DATAS
@@ -102,7 +102,7 @@ typedef struct {
 } Funcionarios;
 
 
-//FUN�OES
+//FUNÇOES
 int define_data(int pedido);
 char *data_completa();
 void cleanInputBuffer();
@@ -110,11 +110,11 @@ int obter_int(int min, int max, char *texto);
 void obter_string(char *string, unsigned int tamanho, char *texto);
 double obter_num(double min, double max, char *texto);
 int addFuncionario(Funcionarios *funcionarios, int codigo);
-int procurarFuncionario(Funcionarios funcionarios, int codigo);
-int verificarFuncionario(Funcionarios funcionarios, int codigo);
-int verificacao_addFuncionarios(Funcionarios funcionarios);
+int procurarFuncionario(Funcionarios *funcionarios, int codigo);
+int verificarFuncionario(Funcionarios *funcionarios, int codigo);
+int verificacao_addFuncionarios(Funcionarios *funcionarios);
 void editarFuncionario(Funcionarios *funcionarios, int posicao, int opcao);
-int infoFuncionario(Funcionarios funcionarios, int posicao);
+int infoFuncionario(Funcionarios *funcionarios, int posicao);
 void verificacao_editarFuncionarios(Funcionarios *funcionarios);
 void removerFuncionario(Funcionarios * funcionarios);
 int obterNumDias(char *texto);
