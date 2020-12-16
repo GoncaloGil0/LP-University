@@ -8,7 +8,7 @@
 //#include "processar_info.h"
 
 
-//FUNÇOES
+//FUNÃ‡OES
 
 
 //SABER PARTES DA DATA 
@@ -101,10 +101,11 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
     //VARIAVEIS LOCAIS
     int est_civil, cargo;
     char saida;
+    double numero_tlm;
 
 
     //ASSOCIAR CODIGO
-    funcionarios->funcionario_array[funcionarios->contador].codigo = codigo;
+    funcionarios->funcionario_array[funcionarios->contador].codigo = codigo; //sinto que o erro deve tar por aqui
 
 
     //OBTER NOME
@@ -112,8 +113,8 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
 
 
     //OBTER NUMERO TELEMOVEL
-    double numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
-    funcionarios->funcionario_array[funcionarios->contador].numero_tlm = numero_tlm;
+    //numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
+    //funcionarios->funcionario_array[funcionarios->contador].numero_tlm = numero_tlm;
 
 
     //OBTER ESTADO CIVIL
@@ -191,7 +192,7 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
 
     } else {
         // temos de atribuir um valor a data quando ele ainda esta na empresa para podermos fazer os calculos dps
-        // podemos dar o valor 0 e programa-lo para quando encontrar um 0 na data ir á funcao define_data() buscar 
+        // podemos dar o valor 0 e programa-lo para quando encontrar um 0 na data ir Ã¡ funcao define_data() buscar 
         // o ano atual
     }
 
@@ -207,10 +208,10 @@ int addFuncionario(Funcionarios *funcionarios, int codigo) {
 
 //PROCURAR FUNCIONARIO
 
-int procurarFuncionario(Funcionarios funcionarios, int codigo) {
+int procurarFuncionario(Funcionarios *funcionarios, int codigo) {
     int i;
-    for (i = 0; i < funcionarios.contador; i++) {
-        if (funcionarios.funcionario_array[i].codigo == codigo) {
+    for (i = 0; i < funcionarios->contador; i++) {
+        if (funcionarios->funcionario_array[i].codigo == codigo) {
             return i;
         }
     }
@@ -219,18 +220,18 @@ int procurarFuncionario(Funcionarios funcionarios, int codigo) {
 
 //VERIFICAR SE PODE ADICIONAR FUNCIONARIO OU SEJA SE JA EXISTE 
 
-int verificarFuncionario(Funcionarios funcionarios, int codigo) {
+int verificarFuncionario(Funcionarios *funcionarios, int codigo) {
     if (procurarFuncionario(funcionarios, codigo) != -1) {
         return -1;
     } else {
-        addFuncionario(&funcionarios, codigo);
+        addFuncionario(funcionarios, codigo);
     }
 }
 
 //VERIFICAR SE LISTA DE FUNCIONARIOS ESTA CHEIA
 
-int verificacao_addFuncionarios(Funcionarios funcionarios) {
-    if (funcionarios.contador < MAX_FUNCIONARIOS) {
+int verificacao_addFuncionarios(Funcionarios *funcionarios) {
+    if (funcionarios->contador < MAX_FUNCIONARIOS) {
         if (verificarFuncionario(funcionarios, obterInt(MIN_CODIGO, MAX_CODIGO, OBTER_CODIGO)) == -1) {
             puts(FUNC_EXISTENTE);
             return 1;
@@ -241,17 +242,18 @@ int verificacao_addFuncionarios(Funcionarios funcionarios) {
     }
 }
 
-// FAZER A ALTER�AO DOS DADOS DO FUNCIONARIO 
+// FAZER A ALTERAÇAO DOS DADOS DO FUNCIONARIO 
 
 void editarFuncionario(Funcionarios *funcionarios, int posicao, int opcao) {
 
     int est_civil, cargo;
+    double numero_tlm;
 
     switch (opcao) {
 
         case 1:
             //ALTERAR TELEMOVEL
-            double numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
+            numero_tlm = obterNum(MIN_NUM_TELE, MAX_NUM_TELE, OBTER_NUM_TELE);
             funcionarios->funcionario_array[posicao].numero_tlm = numero_tlm;
             break;
         case 2:
@@ -308,21 +310,21 @@ void editarFuncionario(Funcionarios *funcionarios, int posicao, int opcao) {
 
 // MOSTRAR OS DADOS DO FUNCIONARIO 
 
-int infoFuncionario(Funcionarios funcionarios, int posicao) {
+int infoFuncionario(Funcionarios *funcionarios, int posicao) {
 
     int opcao;
 
-    printf("%s%d\n", OBTER_CODIGO, funcionarios.funcionario_array[posicao].codigo);
-    printf("%s%s\n", OBTER_NOME, funcionarios.funcionario_array[posicao].nome);
-    printf("%s%d\n", OBTER_NUM_TELE, funcionarios.funcionario_array[posicao].numero_tlm);
-    printf("%s%d\n", EST_CIVIL, funcionarios.funcionario_array[posicao].est_civil);
-    printf("%s%d\n", OBTER_NUM_FILHOS, funcionarios.funcionario_array[posicao].numero_filhos);
-    printf("%s%d\n", CARGO, funcionarios.funcionario_array[posicao].cargo);
-    printf("%s%f\n", OBTER_SALARIO, funcionarios.funcionario_array[posicao].valor_hora);
-    printf("%s%f\n", OBTER_SUB_ALI, funcionarios.funcionario_array[posicao].valor_sub_ali);
-    printf("%s%d-%d-%d\n", OBTER_DATA_NASC, funcionarios.funcionario_array[posicao].nascimento.dia, funcionarios.funcionario_array[posicao].nascimento.mes, funcionarios.funcionario_array[posicao].nascimento.ano);
-    printf("%s%d-%d-%d\n", OBTER_DATA_ENT, funcionarios.funcionario_array[posicao].entrada_emp.dia, funcionarios.funcionario_array[posicao].entrada_emp.mes, funcionarios.funcionario_array[posicao].entrada_emp.ano);
-    printf("%s%d-%d-%d\n", OBTER_DATA_SAIDA, funcionarios.funcionario_array[posicao].saida_emp.dia, funcionarios.funcionario_array[posicao].saida_emp.mes, funcionarios.funcionario_array[posicao].saida_emp.ano); //melhorar para aqueles que cont na empresa
+    printf("%s%d\n", OBTER_CODIGO, funcionarios->funcionario_array[posicao].codigo);
+    printf("%s%s\n", OBTER_NOME, funcionarios->funcionario_array[posicao].nome);
+    printf("%s%d\n", OBTER_NUM_TELE, funcionarios->funcionario_array[posicao].numero_tlm);
+    printf("%s%d\n", EST_CIVIL, funcionarios->funcionario_array[posicao].est_civil);
+    printf("%s%d\n", OBTER_NUM_FILHOS, funcionarios->funcionario_array[posicao].numero_filhos);
+    printf("%s%d\n", CARGO, funcionarios->funcionario_array[posicao].cargo);
+    printf("%s%f\n", OBTER_SALARIO, funcionarios->funcionario_array[posicao].valor_hora);
+    printf("%s%f\n", OBTER_SUB_ALI, funcionarios->funcionario_array[posicao].valor_sub_ali);
+    printf("%s%d-%d-%d\n", OBTER_DATA_NASC, funcionarios->funcionario_array[posicao].nascimento.dia, funcionarios->funcionario_array[posicao].nascimento.mes, funcionarios->funcionario_array[posicao].nascimento.ano);
+    printf("%s%d-%d-%d\n", OBTER_DATA_ENT, funcionarios->funcionario_array[posicao].entrada_emp.dia, funcionarios->funcionario_array[posicao].entrada_emp.mes, funcionarios->funcionario_array[posicao].entrada_emp.ano);
+    printf("%s%d-%d-%d\n", OBTER_DATA_SAIDA, funcionarios->funcionario_array[posicao].saida_emp.dia, funcionarios->funcionario_array[posicao].saida_emp.mes, funcionarios->funcionario_array[posicao].saida_emp.ano); //melhorar para aqueles que cont na empresa
 
     do {
         puts("Escolha o parametro que deseja alterar: \n\n");
@@ -331,15 +333,15 @@ int infoFuncionario(Funcionarios funcionarios, int posicao) {
         puts("3) Numero de filhos \n");
         puts("4) Cargo \n");
         puts("5) Valor hora \n");
-        puts("6) Valor hora subsidio de alimentação \n");
+        puts("6) Valor hora subsidio de alimentaÃ§Ã£o \n");
         puts("7) Data de saida da empresa \n");
         puts("0) Voltar \n");
-        puts("Op��o: ");
+        puts("Opção: ");
         scanf("%d", &opcao);
 
     } while (opcao < 0 || opcao > 7);
 
-    editarFuncionario(funcionarios, posicao, opcao);
+    editarFuncionario( funcionarios, posicao, opcao);
 
     return (opcao);
 
@@ -350,17 +352,17 @@ int infoFuncionario(Funcionarios funcionarios, int posicao) {
 void verificacao_editarFuncionarios(Funcionarios *funcionarios) {
     char resposta;
     int codigo = obterInt(MIN_CODIGO, MAX_CODIGO, OBTER_CODIGO);
-    int posicao = procurarFuncionario(*funcionarios, codigo);
+    int posicao = procurarFuncionario(funcionarios, codigo);
     if (posicao != -1) {
-        infoFuncionario(funcionarios, posicao);
+        infoFuncionario( funcionarios, posicao);
     } else {
         puts(FUNC_INEXISTENTE);
         do {
-            printf("\nDeseja adicionar o funcion�rio [s/n]?");
+            printf("\nDeseja adicionar o funcionário [s/n]?");
             scanf(" %c", &resposta);
-        } while (reposta != 's' || resposta != 'n');
+        } while (resposta != 's' || resposta != 'n');
         if (resposta == 's') {
-            addFuncionario(&funcionarios, codigo);
+            addFuncionario( funcionarios, codigo);
         }
     }
 }
@@ -368,7 +370,7 @@ void verificacao_editarFuncionarios(Funcionarios *funcionarios) {
 //REMOVER FUNCIONARIOS
 
 void removerFuncionario(Funcionarios * funcionarios) {
-    int i, numero = procurarFuncionario(*funcionarios, obterInt(MIN_CODIGO, MAX_CODIGO, OBTER_CODIGO));
+    int i, numero = procurarFuncionario( funcionarios, obterInt(MIN_CODIGO, MAX_CODIGO, OBTER_CODIGO));
     if (numero != -1) {
         i = numero;
         //funcionarios->funcionario_array[i].ativo = 0;
@@ -401,7 +403,7 @@ int verificacaoDias(int dias_compl, int dias_meios, int dias_fds, int dias_falta
 
 //CALCULAR SALARIOS
 
-void calcSalarial(Funcionarios * funcionarios) {
+void calcSalarial(Funcionarios *funcionarios) {
 
     do {
         funcionarios->funcionario_array[funcionarios->contador].mes = obterNumDias(OBTER_NUM_MES); //se o mes mudar, o resto nao muda pois nao?
@@ -416,4 +418,3 @@ void calcSalarial(Funcionarios * funcionarios) {
             &funcionarios->funcionario_array[funcionarios->contador].mes)
             == -1);
 }
-
