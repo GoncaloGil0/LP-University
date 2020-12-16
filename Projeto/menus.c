@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,9 +6,12 @@
 #include "pedir_info.h"
 #include "menus.h"
 
+//VARIAVEIS APOIO
+Funcionarios funcionarios = {.contador = 0};
+
 
 //MENU PRINCIPAL
-void menu() {
+void menu( Funcionarios *funcionarios) {
 
     int opcao;
 
@@ -15,12 +19,12 @@ void menu() {
         printf("\n+ MENU +\n");
         printf("| 1) Carregar dados\n");
         printf("| 2) Guardar dados\n");
-        printf("| 3) Gest„o de funcionarios\n"); 
-        printf("| 4) Gest„o das tabelas de descontos para o IRS\n");
-        printf("| 5) Gest„o das tabelas de descontos para a SeguranÁa Social\n");
+        printf("| 3) Gest√£o de funcionarios\n"); 
+        printf("| 4) Gest√£o das tabelas de descontos para o IRS\n");
+        printf("| 5) Gest√£o das tabelas de descontos para a Seguran√ßa Social\n");
         printf("| 6) Listagens \n");
         printf("| 0) Sair\n");
-        printf("| OpÁ„o: ");
+        printf("| Op√ß√£o: ");
         scanf("%d", &opcao);
     } while (opcao < 0 || opcao > 6);
 
@@ -33,7 +37,7 @@ void menu() {
             //printf("f2");
             break;
         case 3:
-            menu_gestao_funcionarios();
+            menu_gestao_funcionarios( funcionarios );
             break;
         case 4:
             menu_gestao_tabelas();
@@ -45,23 +49,23 @@ void menu() {
             menu_listagens();
             break;
         case 0:
-            printf("A aplica√ß√£o foi terminada com sucesso");
+            printf("A aplica√É¬ß√É¬£o foi terminada com sucesso");
             exit(0);
     }
 }
 
 //MENU FUNCIONARIOS
-void menu_gestao_funcionarios() {
+void menu_gestao_funcionarios( Funcionarios *funcionarios ) {
 
     int opcao;
 
     do {
-        printf("\n+ GEST√O DE FUNCIONARIOS +\n");
+        printf("\n+ GEST√ÉO DE FUNCIONARIOS +\n");
         printf("| 1) Adicionar\n");
         printf("| 2) Editar\n");
         printf("| 3) Remover\n");
         printf("| 0) Voltar\n");
-        printf("| OpÁ„o: ");
+        printf("| Op√ß√£o: ");
         scanf("%d", &opcao);
     } while (opcao < 0 || opcao > 4);
 
@@ -70,13 +74,10 @@ void menu_gestao_funcionarios() {
             verificacao_addFuncionarios( funcionarios );
             break;
         case 2:
-            verificacao_editarFuncionarios( &funcionarios );
+            verificacao_editarFuncionarios( funcionarios );
             break;
         case 3:
-            removerFuncionario( &funcionarios );
-            break;
-        case 0:
-            menu();
+            removerFuncionario( funcionarios );
             break;
     }
 }
@@ -87,11 +88,11 @@ void menu_gestao_tabelas() {
     int opcao;
 
     do {
-        printf("\n+ GEST√O DAS TABELAS DE DESCONTOS PARA O IRS E SEGURAN√áA SOCIAL +\n");
+        printf("\n+ GEST√ÉO DAS TABELAS DE DESCONTOS PARA O IRS E SEGURAN√É‚Ä°A SOCIAL +\n");
         printf("| 1) Criar criterio\n");
         printf("| 2) Adicionar criterio\n");
         printf("| 0) Voltar\n");
-        printf("| OpÁ„o: ");
+        printf("| Op√ß√£o: ");
         scanf("%d", &opcao);
     } while (opcao < 0 || opcao > 3);
 
@@ -102,9 +103,6 @@ void menu_gestao_tabelas() {
             break;
         case 2:
             //add_criterio();
-            break;
-        case 0:
-            menu();
             break;
     }
 }
@@ -123,7 +121,7 @@ void menu_listagens(){
         printf("| 4) Listagem 4\n");
         printf("| 5) Listagem 5\n");
         printf("| 0) Voltar\n");
-        printf("| OpÁ„oo: ");
+        printf("| Op√ß√£oo: ");
         scanf("%d", &opcao);    
     }while( opcao < 0 || opcao > 5 );
     
@@ -142,9 +140,6 @@ void menu_listagens(){
             break;
         case 5:
             //listagem 5
-            break;
-        case 0:
-            menu();
             break;
     }
 
