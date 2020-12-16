@@ -7,10 +7,6 @@
 //#include "processar_info.h"
 
 
-//VARIAVEIS APOIO
-Funcionarios funcionarios = {.contador = 0};
-
-
 int main() {
 
     //VARIAVEIS
@@ -30,4 +26,3 @@ int main() {
 
     return (0);
 }
-
