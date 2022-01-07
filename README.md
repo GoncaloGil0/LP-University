@@ -16,3 +16,4 @@ Clonar o repositorio
 ``` 
 git clone https://github.com/GoncaloGil0/ProjetoLP.git
 ```
+Nota final: 17 valores
