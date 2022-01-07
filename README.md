@@ -4,6 +4,13 @@ Projeto final realizado no âmbito da disciplina de laboratórios de programaç�
 
 Ano letivo 2020/2021
 
+Constituido por:
+
+- Codigo
+- Doxygen
+- Relatorio final
+
+
 Clonar o repositorio
 
 ``` 
