@@ -7,7 +7,7 @@ Projeto final realizado no âmbito da disciplina de laboratórios de programaç�
 
 Ano letivo 2020/2021
 
-## Constituição:
+## Constituição
 
 - Codigo
 - Doxygen
