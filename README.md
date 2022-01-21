@@ -1,6 +1,6 @@
 # Projeto Final de Laboratórios de Programação
-![LP](https://img.shields.io/badge/Faculdade-LP-brightgreen)
-![Nota](https://img.shields.io/badge/Nota%20final-17%20valores-brightgreen)
+![LP](https://img.shields.io/badge/Faculdade-LP-green)
+![Nota](https://img.shields.io/badge/Nota%20final-17%20valores-green)
 
 Projeto final realizado no âmbito da disciplina de laboratórios de programação.
 
