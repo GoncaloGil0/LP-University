@@ -16,5 +16,5 @@ Ano letivo 2020/2021
 
 ## Clonar o repositorio
 ``` 
-git clone https://github.com/GoncaloGil0/ProjetoLP.git
+git clone https://github.com/GoncaloGil0/LP-University.git
 ```
